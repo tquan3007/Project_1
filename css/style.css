@@ -43,6 +43,7 @@ div {
 
 @media screen and (min-width:772px) {
   div {
+    display: inline-block;
     width: 45%;
   }
   div img {
@@ -52,6 +53,7 @@ div {
 
 @media screen and (min-width:998px) {
   div {
+    display: inline-block;
     width: 30%;
   }
 }
