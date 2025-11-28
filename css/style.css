@@ -1,126 +1,122 @@
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: #dedede;
-  padding: 5px;
-  margin: 15px;
-  font-size: 25px;
-  font-family: Arial, sans-serif;
-  color: #333; /* Màu chữ mặc định cho chế độ sáng */
+  background-color: #dedede;
+  padding: 5px;
+  margin: 15px;
+  font-size: 25px;
+  font-family: Arial, sans-serif;
+  color: #333; /* Màu chữ mặc định cho chế độ sáng */
 }
 
 h1 {
-  text-align: center;
-  font-size: 1.95em;
+  text-align: center;
+  font-size: 1.95em;
 }
 
 /* Lưới 1 cột với gap 10px (Áp dụng cho mobile) */
 .grid-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
 }
 
 /* Styling cho Figure và Image */
 figure {
-  padding: 10px;
-  border-radius: 10px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* Đảm bảo hình ảnh không lòi ra ngoài */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Đảm bảo hình ảnh không lòi ra ngoài */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 img {
-  border: 5px solid blue;
-  border-radius: 35px; /* Bo góc mặc định 35px (mobile) */
-  width: 100%;
-  display: block;
-  height: auto; /* Chiều cao tự động để giữ tỉ lệ */
-  object-fit: cover;
+  border: 5px solid blue;
+  border-radius: 35px; /* Bo góc mặc định 35px (mobile) */
+  width: 100%;
+  display: block;
+  height: auto; /* Chiều cao tự động để giữ tỉ lệ */
+  object-fit: cover;
 }
 
 figcaption {
-  text-align: center;
-  margin-top: 10px;
-  font-weight: bold;
-  font-size: 0.8em;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 0.8em;
 }
 
 /* ------------------------------------------------------------------ */
 /* Quy tắc cho Màn hình Tablet (Trigger tại 772px) */
 /* ------------------------------------------------------------------ */
 @media (min-width: 772px) {
-  /* Lưới 2 cột */
-  .grid-container {
-    grid-template-columns: 1fr 1fr;
-    /* Không cần lặp lại gap: 10px; */
-  }
+  /* Lưới 2 cột */
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+    /* Không cần lặp lại gap: 10px; */
+  }
 
-  /* Hình ảnh tròn */
-  .grid-container figure img {
-    border-radius: 50%; /* Tạo hình tròn */
-  }
+  /* Hình ảnh tròn */
+  .grid-container figure img {
+    border-radius: 50%; /* Tạo hình tròn */
+  }
 
-  /* Hình cuối cùng chiếm 2 cột */
-  .grid-container figure:last-child {
-    grid-column: 1 / -1;
-  }
+  /* Hình cuối cùng chiếm 2 cột */
+  .grid-container figure:last-child {
+    grid-column: 1 / -1;
+  }
 }
 
 /* ------------------------------------------------------------------ */
 /* Quy tắc cho Màn hình Lớn (Trigger tại 992px) */
 /* ------------------------------------------------------------------ */
 @media (min-width: 992px) {
-  /* Loại bỏ border radius khỏi tất cả các hình ảnh */
-  .grid-container figure img {
-    border-radius: 0;
-  }
+  /* Loại bỏ border radius khỏi tất cả các hình ảnh */
+  .grid-container figure img {
+    border-radius: 0;
+  }
 
-  /* Mọi hình thứ ba chiếm 2 cột */
-  .grid-container figure:nth-child(3n) {
-    grid-column: 1 / -1;
-  }
+  /* Mọi hình thứ ba chiếm 2 cột */
+  .grid-container figure:nth-child(3n) {
+    grid-column: 1 / -1;
+  }
 
-  /* Đảm bảo phần tử cuối cùng vẫn nằm trong flow nếu nó không phải là phần tử 3n */
-  /* Nếu nó là 3n, quy tắc 3n sẽ được áp dụng. Nếu không, nó sẽ chiếm 1 cột. */
-  .grid-container figure:last-child:not(:nth-child(3n)) {
-    grid-column: span 1; /* Đặt lại nếu nó không phải 3n để không xung đột */
-  }
+  /* ĐÃ LOẠI BỎ: Quy tắc grid-column: span 1 cho phần tử cuối cùng không phải 3n */
 }
 
 /* ------------------------------------------------------------------ */
 /* Truy vấn: prefers-reduced-motion */
 /* ------------------------------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto; /* Loại bỏ cuộn mượt */
-  }
+  html {
+    scroll-behavior: auto; /* Loại bỏ cuộn mượt */
+  }
 }
 
 /* ------------------------------------------------------------------ */
 /* Truy vấn: Dark Mode (prefers-color-scheme: dark) */
 /* ------------------------------------------------------------------ */
 @media (prefers-color-scheme: dark) {
-  body {
-    background-color: #1a1a1a;
-    color: #e0e0e0;
-  }
-  /* Đổi màu nền figure */
-  .grid-container figure {
-    background-color: #333333;
-    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
-  }
-  /* Đổi màu chữ figure (figcaption) */
-  .grid-container figure figcaption {
-    color: #ffcc66; /* Màu vàng nhạt */
-  }
-  /* Đổi màu đường viền hình ảnh figure */
-  .grid-container figure img {
-    border-color: #000000; /* Đường viền đen */
-  }
+  body {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+  }
+  /* Đổi màu nền figure */
+  .grid-container figure {
+    background-color: #333333;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+  }
+  /* Đổi màu chữ figure (figcaption) */
+  .grid-container figure figcaption {
+    color: #ffcc66; /* Màu vàng nhạt */
+  }
+  /* Đổi màu đường viền hình ảnh figure */
+  .grid-container figure img {
+    border-color: #000000; /* Đường viền đen */
+  }
 }
